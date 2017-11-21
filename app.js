@@ -17,11 +17,12 @@ const users = require('./routes/users');
 
 //passport config
 require('./config/passport')(passport);
-
+//dbConfig
+const db = require('./config/database');
 //Map global promise - get rid of warning mongoose
 mongoose.Promise = global.Promise;
 //Connect to mongoose
-mongoose.connect('mongodb://localhost/testjot-dev', {
+mongoose.connect(db.mongoURI, {
   useMongoClient: true
 })
   .then(() => console.log('MongoDB Connected...'))
